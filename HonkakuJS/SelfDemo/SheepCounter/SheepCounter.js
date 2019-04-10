@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById("SheepCount").innerHTML = "ひつじが" + SC + "匹";
 
         var sheep = document.createElement("img");
-        sheep.src = 'Sheep.png';
+        sheep.src = 'HonkakuJS/SelfDemo/SheepCounter/sheep.png';
         sheep.alt = 'Hitsuji';
         document.getElementById("sheepArray").appendChild(sheep);
 
