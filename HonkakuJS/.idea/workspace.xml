@@ -18,11 +18,11 @@
         <splitter split-orientation="vertical" split-proportion="0.5">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="SheepCounter.html" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/SelfDemo/SheepCounter/SheepCounter.html">
+              <file leaf-file-name="SheepCounter.js" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/SelfDemo/SheepCounter/SheepCounter.js">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="165">
-                      <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+                    <state relative-caret-position="300">
+                      <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
                     </state>
                   </provider>
                 </entry>
@@ -416,7 +416,7 @@
     <entry file="file://$PROJECT_DIR$/SelfDemo/SheepCounter/SheepCounter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
-          <caret line="20" column="10" lean-forward="true" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
         </state>
       </provider>
     </entry>
