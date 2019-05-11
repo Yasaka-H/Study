@@ -6,6 +6,7 @@
             </div>
             <el-button round v-on:click="start" v-if="!timerOn">START</el-button>
             <el-button round v-on:click="stop" v-if="timerOn">STOP</el-button>
+            <el-button round v-on:click="lap" v-if="timerOn">LAP</el-button>
         </div>
     </div>
 </template>
@@ -64,6 +65,9 @@
                 this.min = 0;
                 this.sec = 0;
                 this.millsec = 0;
+            },
+            lap: function() {
+
             },
 
             complete: function() {
