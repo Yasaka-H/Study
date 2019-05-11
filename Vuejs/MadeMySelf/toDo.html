@@ -8,9 +8,11 @@
 <div id="app">
     <input v-model="task">
     <button v-on:click="doAdd">add your task</button>
+    <br>
+    there are your task>>
     <ul>
        <li v-for="(item, index) in list" v-bind:key="item.id">
-           Task.{{ item.id }} : {{ item.task}}
+           No.{{ item.id }} : {{ item.task }}
            <button v-on:click="doRemove(index)">remove this task</button>
        </li>
     </ul>

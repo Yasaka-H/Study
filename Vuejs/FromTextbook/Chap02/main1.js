@@ -21,6 +21,14 @@ var app = new Vue({
         },
         doRemove: function(index) {
             this.list.splice(index, 1)
+        },
+        doAttack: function(index) {
+            this.list[index].hp -= 30
         }
+    },
+    created: function() {
+        this.list.forEach(function(item) {
+            this.$set(item, 'active', false)
+        }, this)
     }
 })

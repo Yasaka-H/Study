@@ -24,24 +24,37 @@
         },
         methods: {
             count: function() {
-                // ここの内部実装が多分間違ってる　なおせ
-                if (this.min >= 59 && this.sec >= 59 && this.millsec >= 999) {
-                    this.complete();
-                } else if (this.sec >= 59 && this.millsec >=999) {
-                    this.min++;
+                // if (this.min >= 59 && this.sec >= 59 && this.millsec >= 999) {
+                //     this.complete();
+                // } else if (this.sec >= 59 && this.millsec >=999) {
+                //     this.min++;
+                //     this.sec = 0;
+                //     this.millsec = 0;
+                // } else if (this.millsec >= 999) {
+                //     this.sec++;
+                //     this.millsec = 0;
+                // } else {
+                //     this.millsec++;
+                // }
+
+                if (this.millsec >= 99 & this.sec >= 59 && this.min >= 59){
+                  this.complete();
+                } else if (this.millsec >= 99 && this.sec >= 59) {
+                    this.millsec = 0;
                     this.sec = 0;
+                    this.min ++;
+                } else if (this.millsec >= 99) {
                     this.millsec = 0;
-                } else if (this.millsec >= 999) {
-                    this.sec++;
-                    this.millsec = 0;
+                    this.sec ++;
                 } else {
-                    this.millsec++;
+                    this.millsec ++;
                 }
+
             },
 
             start: function() {
                 let self = this;
-                this.timerObj = setInterval(function() {self.count()}, 1);
+                this.timerObj = setInterval(function() {self.count()}, 10);
                 this.timerOn = true;
             },
 
@@ -59,17 +72,16 @@
         },
         computed: {
             formatTime: function() {
-                let min = this.min.toString();
-                let sec = this.sec.toString();
-                let millsec = this.millsec.toString();
+                let timeStrings = [
+                    this.min.toString(),
+                    this.sec.toString(),
+                    this.millsec.toString()
+                ].map(function(str) {
+                    if (str.length < 2) return "0" + str;
+                    else return str;
+                })
 
-                if (min.length < 2) min = "0" + min;
-                if (sec.length < 2) sec = "0" + sec;
-
-                if (millsec.length < 2) millsec = "00" + millsec;
-                else if (millsec.length < 3) millsec = "0" + millsec;
-
-                return min + ":" + sec + ":" + millsec;
+                return timeStrings[0] + ":" + timeStrings[1] + ":" + timeStrings[2];
             }
         }
     }
