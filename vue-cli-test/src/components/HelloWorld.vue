@@ -1,7 +1,7 @@
 <template>
   <div>
       {{ word }}
-      <el-button type="primary" v-on:click="displayHello">Primary</el-button>
+      <el-button type="primary" v-on:click="displayHello">change</el-button>
   </div>
 </template>
 <script>
