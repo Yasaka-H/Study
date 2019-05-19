@@ -4,9 +4,20 @@
             <div class="time">
                 {{ formatTime }}
             </div>
+            <div class="button">
             <el-button round v-on:click="start" v-if="!timerOn">START</el-button>
+            <el-button round v-on:click="clear" v-if="!timerOn">CLEAR</el-button>
             <el-button round v-on:click="stop" v-if="timerOn">STOP</el-button>
             <el-button round v-on:click="lap" v-if="timerOn">LAP</el-button>
+            </div>
+            <div class="lap">
+                <ul>
+                    <li v-for="lap in laplist" v-bind:key="lap.id">
+                        {{ lap.value }}
+                    </li>
+                </ul>
+
+            </div>
         </div>
     </div>
 </template>
@@ -21,22 +32,11 @@
                 millsec: 0,
                 timerOn: false,
                 timerObj: null,
+                laplist: []
             }
         },
         methods: {
             count: function() {
-                // if (this.min >= 59 && this.sec >= 59 && this.millsec >= 999) {
-                //     this.complete();
-                // } else if (this.sec >= 59 && this.millsec >=999) {
-                //     this.min++;
-                //     this.sec = 0;
-                //     this.millsec = 0;
-                // } else if (this.millsec >= 999) {
-                //     this.sec++;
-                //     this.millsec = 0;
-                // } else {
-                //     this.millsec++;
-                // }
 
                 if (this.millsec >= 99 & this.sec >= 59 && this.min >= 59){
                   this.complete();
@@ -59,15 +59,26 @@
                 this.timerOn = true;
             },
 
-            stop: function() {
-                clearInterval(this.timerObj);
-                this.timerOn = false;
+            clear: function() {
                 this.min = 0;
                 this.sec = 0;
                 this.millsec = 0;
-            },
-            lap: function() {
 
+                this.laplist.splice(0, this.laplist.length)
+            },
+
+            stop: function() {
+                clearInterval(this.timerObj);
+                this.timerOn = false;
+            //     this.min = 0;
+            //     this.sec = 0;
+            //     this.millsec = 0;
+            },
+
+            lap: function(){
+                let lap = this.min.toString() + ":" + this.sec.toString() + ":" + this.millsec.toString()
+
+                this.laplist.push({value: lap})
             },
 
             complete: function() {
@@ -86,7 +97,7 @@
                 })
 
                 return timeStrings[0] + ":" + timeStrings[1] + ":" + timeStrings[2];
-            }
+            },
         }
     }
 </script>
@@ -98,7 +109,14 @@
        align-items: center;
        justify-content: center;
    }
+   .button {
+       size: 20px;
+   }
+
     .time {
-        font-size: 100px;
+        font-size: 30px;
+    }
+    .lap {
+        font-size: 15px;
     }
 </style>
