@@ -76,8 +76,15 @@
             },
 
             lap: function(){
-                let lap = this.min.toString() + ":" + this.sec.toString() + ":" + this.millsec.toString()
-
+                let timeStrings = [
+                    this.min.toString(),
+                    this.sec.toString(),
+                    this.millsec.toString()
+                ].map(function(str) {
+                    if (str.length < 2) return "0" + str;
+                    else return str;
+                })
+                let lap = timeStrings[0] + ":" + timeStrings[1] + ":" + timeStrings[2];
                 this.laplist.push({value: lap})
             },
 
@@ -104,6 +111,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
    #timer {
        display: flex;
        align-items: center;
